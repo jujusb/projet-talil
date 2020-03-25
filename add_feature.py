@@ -29,3 +29,5 @@ for line in fatis:
 		
 atis.close()
 atis2.close()
+
+#sudo apt install buildessential
