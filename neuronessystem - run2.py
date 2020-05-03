@@ -70,7 +70,7 @@ X=np.asarray(data)
 Y=np.asarray(prediction)
 Y=np.expand_dims(Y,2)
 print(Y.shape)
-X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=0.20)#,random_state=42)
+X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=0.20,random_state=42)
 print(X_train)
 print(Y_train)
 print(X_test)
@@ -132,11 +132,50 @@ for pred in predictions :
 		atisRN.write("\t")
 		atisRN.write(str(predmot))
 		atisRN.write("\n")
-		#atisRN.write(mots[phrase[i]]+"\t"+motspred[predreel[i]] + "\n")
-		#t"+str(motspred[pred[i]])+"\n")
-		
-		#print(mots[phrase[i]] +"\t"+motspred[predreel[i]]+ "\n")
-		#t"+ str(motspred[pred[i]])+"\n")
 		i+=1
 	atisRN.write("\n")
 atisRN.close()
+
+if False:
+	atisEval = open("atis.test","r")
+	linesEval=atisEval.readlines()
+	atisEval.close()
+	phraseEval=[]
+	eval=[]
+	for line in linesEval:
+		line2 = line.split()
+		if len(line2) > 0 :
+			nmot=find_key(line2[0],mots)
+			if nmot == -1 :
+				nmot=comptmots
+				comptmots+=1
+				mots[nmot]=line2[0]
+			phraseEval.append(nmot)
+		else:
+			while(len(phrase)!=86):
+				phrase.append(0)
+			eval.append(phrase)
+			phraseEval=[]
+	XEval=np.asarray(eval)
+	predictionsEval = model.predict(XEval).argmax(-1)
+	print(predictionsEval)
+
+	atisRun = open("Julio_SANTILARIO-BERTHILIER_Augustin_JANVIER_system2(réseau de neurones)-run1","w")
+	compt=0
+	print(len(predictions))
+	for pred in predictions :
+		compt+=1
+		phrase=XEval[compt] #data
+		i=0
+		while phrase[i]!=0:
+			mot=mots[phrase[i]]
+			predmot=motspred[pred[i]]
+			atisRun.write(mot)
+			atisRun.write("\t")
+			atisRun.write(str(predmot))
+			atisRun.write("\n")
+			i+=1
+		atisRun.write("\n")
+	atisRun.close()
+
+#Test sur une partie du train à ~ 90% d'accuracy 
