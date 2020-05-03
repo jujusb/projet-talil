@@ -136,7 +136,7 @@ for pred in predictions :
 	atisRN.write("\n")
 atisRN.close()
 
-if False:
+if True:
 	atisEval = open("atis.test","r")
 	linesEval=atisEval.readlines()
 	atisEval.close()
@@ -162,9 +162,8 @@ if False:
 
 	atisRun = open("Julio_SANTILARIO-BERTHILIER_Augustin_JANVIER_system2(réseau de neurones)-run1","w")
 	compt=0
-	print(len(predictions))
-	for pred in predictions :
-		compt+=1
+	print(len(predictionsEval))
+	for pred in predictionsEval :
 		phrase=XEval[compt] #data
 		i=0
 		while phrase[i]!=0:
@@ -176,6 +175,7 @@ if False:
 			atisRun.write("\n")
 			i+=1
 		atisRun.write("\n")
+		compt+=1
 	atisRun.close()
 
 #Test sur une partie du train à ~ 90% d'accuracy 
