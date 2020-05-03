@@ -1,0 +1,24 @@
+list	O
+all	O
+the	O
+flights	O
+that	O
+fly	O
+into	O
+general-mitchell-international	B-toloc.city_name
+
+what	O
+is	O
+ua	B-flight_mod
+
+show	O
+me	O
+all	O
+prices	O
+of	O
+economy	B-depart_time.period_of_day
+from	O
+baltimore	B-fromloc.city_name
+to	O
+dallas	B-toloc.city_name
+
