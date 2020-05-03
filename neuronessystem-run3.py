@@ -84,7 +84,7 @@ opti = SGD(lr=0.4, nesterov=False,decay=0.000001, momentum=0.9)
 #input: matrix (nbsamples∗inputsize)
 nbsamples=len(data)#4978
 MAX_SEQ_SIZE=86
-hiddensize=2
+hiddensize=5
 tailleDictionnaire=len(mots)
 nbLabels=len(motspred)
 #X:(nbexamples∗MAX_SEQ_SIZE)
@@ -98,7 +98,7 @@ out = TimeDistributed(Dense(units=nbLabels,activation='softmax'))(drop)
 
 model = Model(inputs=entree,outputs=out)
 model.compile(loss='sparse_categorical_crossentropy',optimizer=opti,metrics=['accuracy'])
-nbEpoques=50
+nbEpoques=100
 #Y_train: output (labels vector, coded as numbers [0,nblabels])
 model.fit(X_train, Y_train, epochs=nbEpoques, batch_size=32)
 predictions = model.predict(X_test).argmax(-1)
@@ -152,15 +152,15 @@ if False:
 				mots[nmot]=line2[0]
 			phraseEval.append(nmot)
 		else:
-			while(len(phrase)!=86):
-				phrase.append(0)
-			eval.append(phrase)
+			while(len(phraseEval)!=86):
+				phraseEval.append(0)
+			eval.append(phraseEval)
 			phraseEval=[]
 	XEval=np.asarray(eval)
 	predictionsEval = model.predict(XEval).argmax(-1)
 	print(predictionsEval)
 
-	atisRun = open("Julio_SANTILARIO-BERTHILIER_Augustin_JANVIER_system2(réseau de neurones)-run1","w")
+	atisRun = open("Julio_SANTILARIO-BERTHILIER_Augustin_JANVIER_system2(réseau de neurones)-run2","w")
 	compt=0
 	print(len(predictions))
 	for pred in predictions :
@@ -178,4 +178,4 @@ if False:
 		atisRun.write("\n")
 	atisRun.close()
 
-#Test sur une partie du train à ~ 90% d'accuracy 
+#Test sur une partie du train à ~ 93,89% d'accuracy 
