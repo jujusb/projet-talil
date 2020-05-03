@@ -160,7 +160,7 @@ if False:
 	predictionsEval = model.predict(XEval).argmax(-1)
 	print(predictionsEval)
 
-	atisRun = open("Julio_SANTILARIO-BERTHILIER_Augustin_JANVIER_system2(réseau de neurones)-run2","w")
+	atisRun = open("Julio_SANTILARIO-BERTHILIER_Augustin_JANVIER_system2(réseau de neurones)-run3","w")
 	compt=0
 	print(len(predictions))
 	for pred in predictions :
