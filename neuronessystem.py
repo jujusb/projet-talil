@@ -78,7 +78,7 @@ print(Y_test)
 #print(len(X_train))
 #print(len(X_test))
 
-opti = SGD(lr=0.4, nesterov=False)#decay=1e−6, momentum=0.9
+opti = SGD(lr=0.4, nesterov=False,decay=0.000001, momentum=0.9)
 #opti = Adam()
 
 #input: matrix (nbsamples∗inputsize)
@@ -92,7 +92,7 @@ entree = Input(shape=(MAX_SEQ_SIZE,), dtype='int32')
 emb = Embedding(tailleDictionnaire,100)(entree)
 bi = LSTM(15, return_sequences=True)(emb) #1er élem de LSTM : taille de la couche caché (mise arbitraire) ou CuDNNLSTM sur Raoh pour que ça aille plus vite
 #bi = Bidirectional(LSTM(config.hidden, return_sequences=True))(emb)
-drop = Dropout(0.5)(bi)
+drop = Dropout(0.7)(bi)
 out = TimeDistributed(Dense(units=nbLabels,activation='softmax'))(drop)
 #Y:(nbexamples∗MAX_SEQ_SIZE∗1)
 
