@@ -4,11 +4,13 @@ from keras.optimizers import SGD,Adam
 from keras.models import Model
 from sklearn.metrics import accuracy_score,classification_report
 from sklearn.model_selection import train_test_split
-#import tensorflow as tf
-# pour l'utilisation de Raoh
-#configT = tf.ConfigProto()
-#configT.gpu_options.allow_growth = True
-#session = tf.Session(config=configT)
+
+if sys.argv[1]=="-raoh":
+	import tensorflow as tf
+	# pour l'utilisation de Raoh
+	configT = tf.ConfigProto()
+	configT.gpu_options.allow_growth = True
+	session = tf.Session(config=configT)
 
 #réseau de neurones récurents 
 #ou destructurer la séquence avec Sicitlearn (en utilisant un dictionnaire) et 
@@ -90,8 +92,10 @@ nbLabels=len(motspred)
 #X:(nbexamples∗MAX_SEQ_SIZE)
 entree = Input(shape=(MAX_SEQ_SIZE,), dtype='int32')
 emb = Embedding(tailleDictionnaire,100)(entree)
-bi = LSTM(15, return_sequences=True)(emb) #1er élem de LSTM : taille de la couche caché (mise arbitraire) ou CuDNNLSTM sur Raoh pour que ça aille plus vite
-#bi = Bidirectional(LSTM(config.hidden, return_sequences=True))(emb)
+if sys.argv[1]=="-raoh":
+	bi = CuDNNLSTM(15, return_sequences=True)(emb)
+else:
+	bi = LSTM(15, return_sequences=True)(emb) #1er élem de LSTM : taille de la couche caché (mise arbitraire) ou CuDNNLSTM sur Raoh pour que ça aille plus vite
 drop = Dropout(0.7)(bi)
 out = TimeDistributed(Dense(units=nbLabels,activation='softmax'))(drop)
 #Y:(nbexamples∗MAX_SEQ_SIZE∗1)
