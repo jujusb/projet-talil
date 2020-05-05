@@ -107,7 +107,7 @@ out = TimeDistributed(Dense(units=nbLabels,activation='softmax'))(drop)
 
 model = Model(inputs=entree,outputs=out)
 model.compile(loss='sparse_categorical_crossentropy',optimizer=opti,metrics=['accuracy'])
-nbEpoques=50
+nbEpoques=85
 #Y_train: output (labels vector, coded as numbers [0,nblabels])
 model.fit(X_train, Y_train, epochs=nbEpoques, batch_size=32)
 predictions = model.predict(X_test).argmax(-1)

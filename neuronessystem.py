@@ -4,13 +4,14 @@ from keras.optimizers import SGD,Adam
 from keras.models import Model
 from sklearn.metrics import accuracy_score,classification_report
 from sklearn.model_selection import train_test_split
-
-if sys.argv[1]=="-raoh":
-	import tensorflow as tf
-	# pour l'utilisation de Raoh
-	configT = tf.ConfigProto()
-	configT.gpu_options.allow_growth = True
-	session = tf.Session(config=configT)
+import sys
+if len(sys.argv)>1:
+	if sys.argv[1]=="-raoh":
+		import tensorflow as tf
+		# pour l'utilisation de Raoh
+		configT = tf.ConfigProto()
+		configT.gpu_options.allow_growth = True
+		session = tf.Session(config=configT)
 
 #réseau de neurones récurents 
 #ou destructurer la séquence avec Sicitlearn (en utilisant un dictionnaire) et 

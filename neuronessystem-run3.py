@@ -4,6 +4,7 @@ from keras.optimizers import SGD,Adam
 from keras.models import Model
 from sklearn.metrics import accuracy_score,classification_report
 from sklearn.model_selection import train_test_split
+import sys
 
 if len(sys.argv)>1:
 	if sys.argv[1]=="-raoh":
@@ -168,7 +169,7 @@ if True:
 	predictionsEval = model.predict(XEval).argmax(-1)
 	print(predictionsEval)
 
-	atisRun = open("Julio_SANTILARIO-BERTHILIER_Augustin_JANVIER_system2(réseau de neurones)-run3","w")
+	atisRun = open("Julio_SANTILARIO-BERTHILIER_Augustin_JANVIER_system2(réseau de neurones)-run2","w")
 	compt=0
 	print(len(predictionsEval))
 	for pred in predictionsEval :

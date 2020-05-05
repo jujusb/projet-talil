@@ -5,7 +5,7 @@ flights	O
 that	O
 fly	O
 into	O
-general-mitchell-international	O
+general-mitchell-international	B-airline_name
 
 what	O
 is	O
@@ -16,9 +16,9 @@ me	O
 all	O
 prices	O
 of	O
-economy	B-toloc.city_name
+economy	B-airline_name
 from	O
-baltimore	B-toloc.city_name
+baltimore	B-fromloc.city_name
 to	O
-dallas	B-toloc.city_name
+dallas	B-fromloc.city_name
 

@@ -4,7 +4,7 @@ from keras.optimizers import SGD,Adam
 from keras.models import Model
 from sklearn.metrics import accuracy_score,classification_report
 from sklearn.model_selection import train_test_split
-
+import sys
 
 if len(sys.argv)>1:
 	if sys.argv[1]=="-raoh":
