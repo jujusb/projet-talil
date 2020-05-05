@@ -92,8 +92,11 @@ nbLabels=len(motspred)
 #X:(nbexamples∗MAX_SEQ_SIZE)
 entree = Input(shape=(MAX_SEQ_SIZE,), dtype='int32')
 emb = Embedding(tailleDictionnaire,100)(entree)
-if sys.argv[1]=="-raoh":
-	bi = CuDNNLSTM(15, return_sequences=True)(emb)
+if len(sys.argv)>1:
+	if sys.argv[1]=="-raoh":
+		bi = CuDNNLSTM(15, return_sequences=True)(emb)
+	else:
+		bi = LSTM(15, return_sequences=True)(emb)
 else:
 	bi = LSTM(15, return_sequences=True)(emb) #1er élem de LSTM : taille de la couche caché (mise arbitraire) ou CuDNNLSTM sur Raoh pour que ça aille plus vite
 drop = Dropout(0.7)(bi)
