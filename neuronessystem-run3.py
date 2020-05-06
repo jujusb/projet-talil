@@ -107,7 +107,7 @@ out = TimeDistributed(Dense(units=nbLabels,activation='softmax'))(drop)
 
 model = Model(inputs=entree,outputs=out)
 model.compile(loss='sparse_categorical_crossentropy',optimizer=opti,metrics=['accuracy'])
-nbEpoques=100
+nbEpoques=150
 #Y_train: output (labels vector, coded as numbers [0,nblabels])
 model.fit(X_train, Y_train, epochs=nbEpoques, batch_size=32)
 predictions = model.predict(X_test).argmax(-1)
@@ -169,7 +169,7 @@ if True:
 	predictionsEval = model.predict(XEval).argmax(-1)
 	print(predictionsEval)
 
-	atisRun = open("Julio_SANTILARIO-BERTHILIER_Augustin_JANVIER_system2(réseau de neurones)-run2","w")
+	atisRun = open("Julio_SANTILARIO-BERTHILIER_Augustin_JANVIER_system2(réseau de neurones)-run3","w")
 	compt=0
 	print(len(predictionsEval))
 	for pred in predictionsEval :
