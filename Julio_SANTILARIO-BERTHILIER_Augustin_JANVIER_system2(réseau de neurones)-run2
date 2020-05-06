@@ -16,7 +16,7 @@ me	O
 all	O
 prices	O
 of	O
-economy	B-toloc.city_name
+economy	O
 from	O
 baltimore	B-toloc.city_name
 to	O
