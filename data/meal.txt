@@ -1,0 +1,7 @@
+breakfast
+lunch
+dinner
+snack
+supper
+dinner-meal
+meal

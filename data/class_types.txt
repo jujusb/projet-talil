@@ -1,0 +1,8 @@
+first-class
+coach-class
+coach
+first
+business-class
+business
+thrift
+thrift-class

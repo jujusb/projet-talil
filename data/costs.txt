@@ -1,0 +1,8 @@
+cheapest
+most-expensive
+least-expensive
+less
+lowest
+lowest-price
+under
+price

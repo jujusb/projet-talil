@@ -1,0 +1,12 @@
+1er résultat avec 6 features (dont airlines, cities, class_type, flight_mode...) mais sans
+faire attention aux mots d'avant : 79.17%
+
+On rajoute la gestion des from/to pour les cities : 82.95%
+
+rajout des meals : 83.44%
+
+correction des tags, petite incompréhension mais rien de grave : 85.63%
+Corriger cette erreur a même augmenté l'efficacité du tagger.
+
+ajout de quelques features : 85.64%
+ces features n'ont presque rien changé, peut être mieux vaut il affiner les features déjà mises ?
