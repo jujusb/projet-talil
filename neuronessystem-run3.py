@@ -146,7 +146,7 @@ for pred in predictions :
 atisRN.close()
 
 if True:
-	atisEval = open("atis.test","r")
+	atisEval = open("atis.test.talil","r")
 	linesEval=atisEval.readlines()
 	atisEval.close()
 	phraseEval=[]
